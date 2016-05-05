@@ -1,0 +1,79 @@
+body{
+	background-image: url("../images/billtedbackground.jpg");
+	color: white !important;
+}
+.header{
+	margin-bottom: 3%;
+
+}
+.header h1{
+	padding-left: 23%;
+}
+/*Question Area*/
+#content{
+	height: 600px;
+	border-color: white;
+	border-style: solid;
+	
+}
+.start.btn-primary.btn{
+    margin-top: 235px;
+    margin-left: 225px;
+    height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 2x;
+   
+}
+#hidden{
+	padding: 5%;
+}
+.question{
+	margin-top: 20%;
+    font-size: 24px;
+    padding: 10%;
+}
+
+.answers{
+	font-size: 18px;
+	padding-left: 10%;
+}
+.results{
+	margin-top: 20%;
+	font-size: 24px;
+}
+/*Rules Area*/
+#rules{
+	height: 250px;
+	border-color: white;
+	border-style: solid;
+	text-align: center;
+	padding-left: 7%;
+	padding-right: 7%;
+	
+}
+#rules p{
+	margin-top: 10%;
+}
+/*Clock Housing*/
+#timer{
+	margin-top: 50px;
+	height: 200px;
+	border-color: white;
+	border-style: solid;
+	text-align: center;
+	padding-left: 7%;
+	padding-right: 7%;
+	
+}
+#timeLeft{
+	margin-top: 4%;
+	margin-bottom: 4%;
+	font-size: 18px;
+	border-bottom-style: solid;
+}
+/*Countdown Clock*/
+#time{
+	font-size: 90px;
+	margin-top: 5%;
+}

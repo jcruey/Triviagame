@@ -2,6 +2,34 @@ body{
 	background-image: url("../images/billtedbackground.jpg");
 	color: white !important;
 }
+#answers {
+	position: relative;
+	left: 34%;
+	top:180px;
+	list-style: none;
+	background: none;
+	border: none;
+
+}
+#question {
+	font-size: 22px;
+	position: relative;
+	left: 20%;
+	top: 160px;
+	list-style: none;
+	background: none;
+	border: none;
+
+}
+#answers button {
+	background: none;
+	border:none;
+}
+#answers button:hover {
+	background: none;
+	color: red;
+	border:none;
+}
 .header{
 	margin-bottom: 3%;
 
@@ -17,30 +45,14 @@ body{
 	
 }
 .start.btn-primary.btn{
-    margin-top: 235px;
-    margin-left: 225px;
-    height: 50px;
-    padding-left: 25px;
-    padding-right: 25px;
-    border: 2x;
+    position: relative;
+    left: 45%;
+    top: 240px;
    
 }
 #hidden{
 	padding: 5%;
-}
-.question{
-	margin-top: 20%;
-    font-size: 24px;
-    padding: 10%;
-}
 
-.answers{
-	font-size: 18px;
-	padding-left: 10%;
-}
-.results{
-	margin-top: 20%;
-	font-size: 24px;
 }
 /*Rules Area*/
 #rules{

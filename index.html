@@ -5,7 +5,7 @@
     <title>Totally Random Trivia</title>
 
   <!--CSS-->
-  <link rel="stylesheet" href="assets/css/reset.css" type="text/css">  
+  <!-- <link rel="stylesheet" href="assets/css/reset.css" type="text/css"> -->  
   <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
   <!--bootstrap-->
@@ -29,14 +29,14 @@
   				<div id = "content">
   				<!--Button-->
   				<div id = "show">
-  				<button class="start btn-primary btn">Start</button>
+  				<button id="start" class="start btn-primary btn">Start</button>
   				</div>
   				<div id = "hidden">
-  				<!--Question goes here-->
-  					<div class = "question"></div>
+  				<!--Question will populate here-->
+  					<div id = "question"></div>
 
-  				<!--Answers goes here -->
-  					<div class = "answers">
+  				<!--Answers will populate here-->
+  					<div id = "answers">
   						<ul></ul>
   					</div>
   					<div class = "results"></div>
@@ -44,14 +44,14 @@
   				</div>
   			</div>
 
-  			<!--Rules Div-->
+  			<!--Rules-->
   			<div class = "col-md-3 offset-1">
   				<div id = "rules">
-  					<div id = "timeLeft">Rules</div>
+  					<div id = "rulesText">Rules</div>
 	  					<p>Think you are the smartest dude around?</p>
 	  					<p>Answer all the questions before the timer ends or it'll be totally bogus!</p>
 	  				</div>
-	  		<!--Timer Div-->		
+	  		<!--Timer-->		
   				<div id = "timer">
   					<div id = "timeLeft">Time Left</div>
   					<div id = "time"></div>

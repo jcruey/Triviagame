@@ -76,6 +76,12 @@ $(document).ready(function(){
             $("#start").click(game.pickQuestion);
         },
 
+        initialize: function(){
+            game.shuffle(game.questions);
+            game.reset();
+            game.pickQuestion();
+        },
+        
         start: function() {
             $("#time").html(game.time);
             game.countdown = setInterval(game.count, 1000);
@@ -94,7 +100,7 @@ $(document).ready(function(){
                 game.unanswered++;
                 game.stop();
 
-                $("#question").html("<p>Out of Time!</p>");
+                $("#question").html("<p>Bogus!! You're out of Time!</p>");
                 $("#answers").html("<p>The correct answer was: " + game.questions[game.askedQuestions].correctAnswer + "</p>");
 
                 game.askedQuestions++;
@@ -117,52 +123,50 @@ $(document).ready(function(){
             clearInterval(game.countdown);
         },
 
+        shuffle: function(a) {
+            var j, x, i;
+            for (i = a.length; i; i -= 1) {
+                j = Math.floor(Math.random() * i);
+                x = a[i - 1];
+                a[i - 1] = a[j];
+                a[j] = x;
+            }
+        },
+
         pickQuestion: function() {
 
             game.start();
             $('#start').hide();
-
             $("#question").html(game.questions[game.askedQuestions].question);
+            var firstChoice = "<button class='choice' data-answer='" + game.questions[game.askedQuestions].answer1 + "'>" + game.questions[game.askedQuestions].answer1 + "</button><br>"
+            var secondChoice = "<button class='choice' data-answer='" + game.questions[game.askedQuestions].answer2 + "'>" + game.questions[game.askedQuestions].answer2 + "</button><br>"
+            var thirdChoice = "<button class='choice' data-answer='" + game.questions[game.askedQuestions].correctAnswer + "'>" + game.questions[game.askedQuestions].correctAnswer + "</button><br>"
 
-            $("#answers").html("<button class='choice' data-answer='" + game.questions[game.askedQuestions].answer1 + "'>" + game.questions[game.askedQuestions].answer1 + "</button><br>");
-            $("#answers").append("<button class='choice' data-answer='" + game.questions[game.askedQuestions].answer2 + "'>" + game.questions[game.askedQuestions].answer2 + "</button><br>");
-            $("#answers").append("<button class='choice' data-answer='" + game.questions[game.askedQuestions].correctAnswer + "'>" + game.questions[game.askedQuestions].correctAnswer + "</button><br>");
+            var choicesArray = [firstChoice, secondChoice, thirdChoice];
+            // shuffle this array ^^^ using the algorithm you found. Make it a method on this game object
+            game.shuffle(choicesArray);
 
-
+            $('#answers').html(choicesArray.join(''));
 
             $(".choice").click(game.answerLogic);
 
-        }, // End of function to cycle through questions
-
-        // timer for correct answer slide, incorrect answer slide, and time out slide on zero moves to the next part of the array
+        }, 
 
         timeout: function() {
             var wait = setTimeout(game.pickQuestion, 5000);
         },
 
-        // Determines if the guess is right or wrong
 
         answerLogic: function() {
 
-            // if statement for onclick buttons to have class correct, say "Correct", have the correct answer, pull image, andcorrect count ++
-
-            if (($(this).data("answer")) === game.questions[game.askedQuestions].correctAnswer) {
+            if (($(this).data("answer")) == game.questions[game.askedQuestions].correctAnswer) {
                 game.correct++;
                 game.stop();
 
-                //new Audio("assets/sounds/clap.mp3").play();
-
                 $("#question").html("<p>Correct!</p>");
-                
-                //$("#answers").html(game.questions[game.askedQuestions].image);
-
                 game.askedQuestions++;
                 game.time = 30;
 
-                
-
-                // if statement to check when to go to the end slide
-                
                 if (game.askedQuestions == game.questions.length) {
                     setTimeout(game.end, 5000);
                 }
@@ -172,24 +176,20 @@ $(document).ready(function(){
                 }
                 
 
-            } // End of if statment comparing data and correct answer
-
-            // else statemen for onclick buttons to yield you got it wrong and show the right answer page incorrect count ++
+            } 
 
             else {
                 game.incorrect++;
                 game.stop();
 
-                //new Audio("assets/sounds/wrong.wav").play();
 
                 $("#question").html("<p>Nope!</p>");
                 $("#answers").html("<p>The correct answer was: " + game.questions[game.askedQuestions].correctAnswer + "</p>");
-                //$("#answers").append(game.questions[game.askedQuestions].image);
-
+            
                 game.askedQuestions++;
                 game.time = 30;
                 
-                // if statement to check when to go to the end slide
+
                 
                 if (game.askedQuestions == game.questions.length) {
                     setTimeout(game.end, 5000);
@@ -209,20 +209,19 @@ $(document).ready(function(){
 
             game.stop();
 
-            $("#question").html("<p>You did it! Here are your results:</p>");
+            $("#question").html("<p>Totally Bodacious you Finished! Here are your results:</p>");
             $("#answers").html("<p>Correct Answers: " + game.correct + "</p>");
             $("#answers").append("<p>Incorrect Answers: " + game.incorrect + "</p>");
             $("#answers").append("<p>Unanswered: " + game.unanswered + "</p>");
-            $("#answers").append("<button id='reset'>Start Over?</button>");
-
-            $("#reset").click(game.reset);
+            $("#start").show();
+            game.reset();
 
         }
 
     }; 
 
 
-    $("#start").click(game.pickQuestion);
+    $("#start").click(game.initialize);
     
 
 }); 
